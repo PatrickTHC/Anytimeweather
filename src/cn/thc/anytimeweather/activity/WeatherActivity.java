@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import cn.thc.anytimeweather.R;
+import cn.thc.anytimeweather.service.AutoUpdateService;
 import cn.thc.anytimeweather.util.HttpCallbackListener;
 import cn.thc.anytimeweather.util.HttpUtil;
 import cn.thc.anytimeweather.util.Utility;
@@ -136,6 +137,8 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		currentDateText.setText(prefs.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
+		Intent intent = new Intent(this, AutoUpdateService.class);
+		startService(intent);
 	}
 
 	@Override
