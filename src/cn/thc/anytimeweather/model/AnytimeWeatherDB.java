@@ -7,24 +7,24 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import cn.thc.anytimeweather.db.CoolWeatherOpenHelper;
+import cn.thc.anytimeweather.db.AnytimeWeatherOpenHelper;
 
-public class CoolWeatherDB {
+public class AnytimeWeatherDB {
 	public static final String DB_NAME = "cool_weather";
 	public static final int VERSION = 1;
-	private static CoolWeatherDB coolWeatherDB;
+	private static AnytimeWeatherDB anytimeWeatherDB;
 	private SQLiteDatabase db;
 
-	private CoolWeatherDB(Context context) {
-		CoolWeatherOpenHelper dbHelper = new CoolWeatherOpenHelper(context, DB_NAME, null, VERSION);
+	private AnytimeWeatherDB(Context context) {
+		AnytimeWeatherOpenHelper dbHelper = new AnytimeWeatherOpenHelper(context, DB_NAME, null, VERSION);
 		db = dbHelper.getWritableDatabase();
 	}
 
-	public synchronized static CoolWeatherDB getInstance(Context context) {
-		if (coolWeatherDB == null) {
-			coolWeatherDB = new CoolWeatherDB(context);
+	public synchronized static AnytimeWeatherDB getInstance(Context context) {
+		if (anytimeWeatherDB == null) {
+			anytimeWeatherDB = new AnytimeWeatherDB(context);
 		}
-		return coolWeatherDB;
+		return anytimeWeatherDB;
 	}
 
 	public void saveProvince(Province province) {
